@@ -25,7 +25,7 @@ class PHPUnit_Util_Dumper
     public function dump($variable)
     {
         $cloner = new VarCloner;
-        $data   = $cloner->cloneVar($variable);
+        $data   = $cloner->cloneVar($variable)->withRefHandles(false);
 
         $dumper = new CliDumper;
         $dumper->setColors(false);
