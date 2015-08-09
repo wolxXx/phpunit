@@ -25,10 +25,13 @@ class PHPUnit_Util_Dumper
     public function dump($variable)
     {
         $cloner = new VarCloner;
-        $dumper = new CliDumper;
-        $output = fopen('php://memory', 'r+b');
+        $data   = $cloner->cloneVar($variable);
 
-        $dumper->dump($cloner->cloneVar($variable), $output);
+        $dumper = new CliDumper;
+        $dumper->setColors(false);
+
+        $output = fopen('php://memory', 'r+b');
+        $dumper->dump($data, $output);
 
         return rtrim(stream_get_contents($output, -1, 0));
     }
