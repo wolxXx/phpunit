@@ -26,7 +26,6 @@ class PHPUnit_Framework_Constraint_StringStartsWith extends PHPUnit_Framework_Co
      */
     public function __construct($prefix)
     {
-        parent::__construct();
         $this->prefix = $prefix;
     }
 

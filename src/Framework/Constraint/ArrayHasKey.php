@@ -30,7 +30,6 @@ class PHPUnit_Framework_Constraint_ArrayHasKey extends PHPUnit_Framework_Constra
      */
     public function __construct($key)
     {
-        parent::__construct();
         $this->key = $key;
     }
 
@@ -61,7 +60,9 @@ class PHPUnit_Framework_Constraint_ArrayHasKey extends PHPUnit_Framework_Constra
      */
     public function toString()
     {
-        return 'has the key ' . $this->exporter->export($this->key);
+        $dumper = new PHPUnit_Util_Dumper;
+
+        return 'has the key ' . $dumper->dump($this->key);
     }
 
     /**

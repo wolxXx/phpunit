@@ -61,8 +61,6 @@ class PHPUnit_Framework_Constraint_IsEqual extends PHPUnit_Framework_Constraint
      */
     public function __construct($value, $delta = 0.0, $maxDepth = 10, $canonicalize = false, $ignoreCase = false)
     {
-        parent::__construct();
-
         if (!is_numeric($delta)) {
             throw PHPUnit_Util_InvalidArgumentHelper::factory(2, 'numeric');
         }
@@ -166,9 +164,11 @@ class PHPUnit_Framework_Constraint_IsEqual extends PHPUnit_Framework_Constraint
                 );
             }
 
+            $dumper = new PHPUnit_Util_Dumper;
+
             return sprintf(
                 'is equal to %s%s',
-                $this->exporter->export($this->value),
+                $dumper->dump($this->value),
                 $delta
             );
         }

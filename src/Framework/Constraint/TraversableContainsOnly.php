@@ -32,8 +32,6 @@ class PHPUnit_Framework_Constraint_TraversableContainsOnly extends PHPUnit_Frame
      */
     public function __construct($type, $isNativeType = true)
     {
-        parent::__construct();
-
         if ($isNativeType) {
             $this->constraint = new PHPUnit_Framework_Constraint_IsType($type);
         } else {

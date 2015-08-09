@@ -23,7 +23,6 @@ class PHPUnit_Framework_Constraint_ExceptionMessageRegExp extends PHPUnit_Framew
      */
     public function __construct($expected)
     {
-        parent::__construct();
         $this->expectedMessageRegExp = $expected;
     }
 

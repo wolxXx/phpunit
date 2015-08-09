@@ -2086,12 +2086,12 @@ abstract class PHPUnit_Framework_TestCase extends PHPUnit_Framework_Assert imple
     private function compareGlobalStateSnapshotPart(array $before, array $after, $header)
     {
         if ($before != $after) {
-            $differ   = new Differ($header);
-            $exporter = new Exporter;
+            $differ = new Differ($header);
+            $dumper = new PHPUnit_Util_Dumper;
 
             $diff = $differ->diff(
-                $exporter->export($before),
-                $exporter->export($after)
+                $dumper->dump($before),
+                $dumper->dump($after)
             );
 
             throw new PHPUnit_Framework_RiskyTestError(

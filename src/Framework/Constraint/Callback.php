@@ -28,8 +28,6 @@ class PHPUnit_Framework_Constraint_Callback extends PHPUnit_Framework_Constraint
             );
         }
 
-        parent::__construct();
-
         $this->callback = $callback;
     }
 

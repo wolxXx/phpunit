@@ -23,7 +23,6 @@ class PHPUnit_Framework_Constraint_ExceptionMessage extends PHPUnit_Framework_Co
      */
     public function __construct($expected)
     {
-        parent::__construct();
         $this->expectedMessage = $expected;
     }
 

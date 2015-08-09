@@ -23,7 +23,6 @@ class PHPUnit_Framework_Constraint_Exception extends PHPUnit_Framework_Constrain
      */
     public function __construct($className)
     {
-        parent::__construct();
         $this->className = $className;
     }
 

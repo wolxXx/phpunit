@@ -28,7 +28,6 @@ class PHPUnit_Framework_Constraint_IsInstanceOf extends PHPUnit_Framework_Constr
      */
     public function __construct($className)
     {
-        parent::__construct();
         $this->className = $className;
     }
 
@@ -55,9 +54,11 @@ class PHPUnit_Framework_Constraint_IsInstanceOf extends PHPUnit_Framework_Constr
      */
     protected function failureDescription($other)
     {
+        $dumper = new PHPUnit_Util_Dumper;
+
         return sprintf(
             '%s is an instance of %s "%s"',
-            $this->exporter->shortenedExport($other),
+            $dumper->dump($other),
             $this->getType(),
             $this->className
         );

@@ -8,8 +8,6 @@
  * file that was distributed with this source code.
  */
 
-use SebastianBergmann\Exporter\Exporter;
-
 /**
  * Abstract base class for constraints. which are placed upon any value.
  *
@@ -17,13 +15,6 @@ use SebastianBergmann\Exporter\Exporter;
  */
 abstract class PHPUnit_Framework_Constraint implements Countable, PHPUnit_Framework_SelfDescribing
 {
-    protected $exporter;
-
-    public function __construct()
-    {
-        $this->exporter = new Exporter;
-    }
-
     /**
      * Evaluates the constraint for parameter $other
      *
@@ -141,6 +132,8 @@ abstract class PHPUnit_Framework_Constraint implements Countable, PHPUnit_Framew
      */
     protected function failureDescription($other)
     {
-        return $this->exporter->export($other) . ' ' . $this->toString();
+        $dumper = new PHPUnit_Util_Dumper;
+
+        return $dumper->dump($other) . ' ' . $this->toString();
     }
 }

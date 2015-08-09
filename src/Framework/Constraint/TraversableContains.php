@@ -39,8 +39,6 @@ class PHPUnit_Framework_Constraint_TraversableContains extends PHPUnit_Framework
      */
     public function __construct($value, $checkForObjectIdentity = true, $checkForNonObjectIdentity = false)
     {
-        parent::__construct();
-
         if (!is_bool($checkForObjectIdentity)) {
             throw PHPUnit_Util_InvalidArgumentHelper::factory(2, 'boolean');
         }
@@ -97,10 +95,12 @@ class PHPUnit_Framework_Constraint_TraversableContains extends PHPUnit_Framework
      */
     public function toString()
     {
+        $dumper = new PHPUnit_Util_Dumper;
+
         if (is_string($this->value) && strpos($this->value, "\n") !== false) {
             return 'contains "' . $this->value . '"';
         } else {
-            return 'contains ' . $this->exporter->export($this->value);
+            return 'contains ' . $dumper->dump($this->value);
         }
     }
 

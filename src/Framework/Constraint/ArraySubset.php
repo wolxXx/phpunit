@@ -34,7 +34,6 @@ class PHPUnit_Framework_Constraint_ArraySubset extends PHPUnit_Framework_Constra
      */
     public function __construct($subset, $strict = false)
     {
-        parent::__construct();
         $this->strict = $strict;
         $this->subset = $subset;
     }
@@ -64,7 +63,9 @@ class PHPUnit_Framework_Constraint_ArraySubset extends PHPUnit_Framework_Constra
      */
     public function toString()
     {
-        return 'has the subset ' . $this->exporter->export($this->subset);
+        $dumper = new PHPUnit_Util_Dumper;
+
+        return 'has the subset ' . $dumper->dump($this->subset);
     }
 
     /**

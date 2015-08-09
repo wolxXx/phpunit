@@ -38,7 +38,6 @@ class PHPUnit_Framework_Constraint_IsIdentical extends PHPUnit_Framework_Constra
      */
     public function __construct($value)
     {
-        parent::__construct();
         $this->value = $value;
     }
 
@@ -119,11 +118,11 @@ class PHPUnit_Framework_Constraint_IsIdentical extends PHPUnit_Framework_Constra
     public function toString()
     {
         if (is_object($this->value)) {
-            return 'is identical to an object of class "' .
-                   get_class($this->value) . '"';
+            return 'is identical to an object of class "' . get_class($this->value) . '"';
         } else {
-            return 'is identical to ' .
-                   $this->exporter->export($this->value);
+            $dumper = new PHPUnit_Util_Dumper;
+
+            return 'is identical to ' . $dumper->dump($this->value);
         }
     }
 }

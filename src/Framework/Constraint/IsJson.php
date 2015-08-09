@@ -56,9 +56,11 @@ class PHPUnit_Framework_Constraint_IsJson extends PHPUnit_Framework_Constraint
             json_last_error()
         );
 
+        $dumper = new PHPUnit_Util_Dumper;
+
         return sprintf(
             '%s is valid JSON (%s)',
-            $this->exporter->shortenedExport($other),
+            $dumper->dump($other),
             $error
         );
     }
