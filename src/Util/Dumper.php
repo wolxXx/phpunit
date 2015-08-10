@@ -27,7 +27,7 @@ class PHPUnit_Util_Dumper
         $cloner = new VarCloner;
         $data   = $cloner->cloneVar($variable)->withRefHandles(false);
 
-        $dumper = new CliDumper;
+        $dumper = new PHPUnit_Util_Dumper_Dumper;
         $dumper->setColors(false);
 
         $output = fopen('php://memory', 'r+b');
