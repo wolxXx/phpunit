@@ -158,6 +158,13 @@ class PHPUnit_Util_Getopt
             return;
         }
 
-        throw new PHPUnit_Framework_Exception("unrecognized option --$opt");
+        $acceptedStart = 'custom_';
+        if ($acceptedStart !== substr($opt, 0, strlen($acceptedStart))) {
+            throw new PHPUnit_Framework_Exception("--unrecognized option --$opt");
+        }
+
+        $opt = str_replace($acceptedStart, '', $opt);
+
+        $opts[] = [$opt, $opt_arg];
     }
 }
